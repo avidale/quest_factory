@@ -61,7 +61,7 @@ def thematic_response(message):
         greeting1(message)
         return
     
-    response = dialogues[message.chat.id].next(message)
+    response = dialogues[message.chat.id].react(message)
     responce_text, responce_images = strip_content(response, 'image')
     responce_text, responce_audios = strip_content(responce_text, 'audio')
     
@@ -108,15 +108,19 @@ def proactive():
     """ Proactively send something to all the users, if needed.
         This function may be called with small time interval.
     """
+    print('wake')
     for chat_id, dialog in dialogues.items():
+        print(dialog.position)
+        print(dialog.script.loc[dialog.position, 'candidate_positions'])
         if dialog.needs_proactive():
             dummy = DummyMessage(chat_id)
             thematic_response(dummy)
+    print('sleep back')
 
 
 def start_proactive(pause=10):
     while True:
-        logging.log('WAKEUP')
+        logging.info('WAKE_UP')
         try:
             proactive()
         except Exception as ex:
@@ -125,7 +129,8 @@ def start_proactive(pause=10):
         time.sleep(pause)
 
 # start proactive checking
-proactive_thread = threading.Thread(target=start_proactive, daemon=True)
+proactive_thread = threading.Thread(target=start_proactive, daemon=True,
+                                    args=(3,))
 proactive_thread.start()
 
 
