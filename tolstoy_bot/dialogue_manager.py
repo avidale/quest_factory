@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
+"""
+This file contains the main class for dialogue management.
+This class is messenger-agnostic, ang could be reused with VK, WhatsApp, etc.
+"""
 import pandas as pd
 import numpy as np
 # todo: add logging of all the input and output messages within the bot
 
 # todo: большой вопрос, как обрабатывать паузы!
-# todo: introduce specific MESSAGE and RESPONSE object that can be used across messengers
+# todo: introduce specific MESSAGE and RESPONSE objects, messenger-agnostic.
 # this way, main.py does not have to parse reactions.
 
 
 class StupidLinearDialogue:
-    """ Handler of primitive sequential dialogies. """
+    """ Handler of primitive sequential dialogues.
+    """
     script = None   # dataframe with the whole scenario
     config = None   # dict with additional setup data
     position = 0    # index of current state of the bot (its last action)
@@ -20,14 +25,16 @@ class StupidLinearDialogue:
     
     def __init__(self, script):
         """ 
-            script: pd.DataFrame keyed by ['action', 'reaction', 'tag', 'next_tags', 'negative_reaction']
+        Parameters:
+        script: pd.DataFrame keyed by ['action', 'reaction',
+            'tag', 'next_tags', 'negative_reaction']
         """
         self.script = script
         self.reset()
     
     def reset(self):
         """ Roll back the bot state """
-        self.position = 0 # последнее завершённое действие
+        self.position = 0  # последнее завершённое действие
         self.count = self.script.shape[0]
         # parse next positions - they are lists of indices
         # by default, next position is next index (or the first index, for the last row).
@@ -103,5 +110,5 @@ class StupidLinearDialogue:
         return type(s) is str and len(s) > 0
 
     def check_pause(self):
-        # todo: if next expected action is [pause|t] or [pause], return t or self.default_pause
+        #todo: if next expected action is [pause|t] or [pause], return t or self.default_pause
         return None

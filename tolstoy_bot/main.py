@@ -1,25 +1,26 @@
 ﻿# -*- coding: utf-8 -*-
+"""
+This is the main executable file of the Tolstoy Telegram bot
+"""
 import config
-import telebot
-# pip install pyTelegramBotAPI
-
-bot = telebot.TeleBot(config.token)
-
-dialogues = dict()
-
-from dialogue_manager import StupidLinearDialogue
-
+import telebot  # need to pip install pyTelegramBotAPI
+from dialogue_manager import StupidLinearDialogue  # the main logic here!
 import pandas as pd
-
-script = pd.read_excel('botanik.xlsx', sheetname='script')
-script = script[script.notnull().max(axis=1)].reset_index(drop=True)
-script.columns = ['action', 'reaction']
-
 import re
 import os
 import time
 
 STATIC_DIR = 'static'
+
+bot = telebot.TeleBot(config.TOKEN)
+
+dialogues = dict()
+
+# read the dialogue script from Excel
+script = pd.read_excel(config.SCRIPT_FILENAME, sheetname='script')
+script = script[script.notnull().max(axis=1)].reset_index(drop=True)
+script.columns = ['action', 'reaction']
+
 
 def strip_content(text, tag='image'):
     """ Extract patterns like [image|tolstoy.jpg] from text """
@@ -27,25 +28,33 @@ def strip_content(text, tag='image'):
     new_text = re.sub(pat, '', text)
     images = [t for t in re.findall(pat, text)]
     return new_text, images
-			
+
+
 @bot.message_handler(commands=['start'])
 def greeting1(message):
+    """ Initiate a new dialogue for this particular user."""
     dialogues[message.chat.id] = StupidLinearDialogue(script)
     thematic_response(message)
-    
+
+
 @bot.message_handler(commands=['reset'])
 def greeting2(message):
+    """ Hard restart the dialogue for this user. """
     bot.send_message(message.chat.id, "Делаю ресет...")
     greeting1(message)
-		
+
+
 @bot.message_handler(content_types=["text"])
 def thematic_response(message):
+    """ This function gives user messages to dialogue manager
+    and sends back to the user its response.
+    """
     if message.chat.id not in dialogues:
         greeting1(message)
         return
     
-    responce = dialogues[message.chat.id].next(message)
-    responce_text, responce_images = strip_content(responce, 'image')
+    response = dialogues[message.chat.id].next(message)
+    responce_text, responce_images = strip_content(response, 'image')
     responce_text, responce_audios = strip_content(responce_text, 'audio')
     
     if len(responce_text) > 0:
@@ -70,12 +79,14 @@ def thematic_response(message):
 
 @bot.message_handler(commands=['reset'])
 def give_help(message):
-    bot.send_message(message.chat.id, """ Команды /start и /reset обе переводят тебя в начало диалога. """)
+    bot.send_message(message.chat.id, "Команды /start и /reset обе переводят тебя в начало диалога.")
+
 
 while True:
     try:
         bot.polling(none_stop=True)
-    # ConnectionError and ReadTimeout because of possible timout of the requests library
+    # ConnectionError and ReadTimeout arise
+    # because of possible timout of the requests library
     # TypeError for moviepy errors
     # maybe there are others, therefore Exception
     except Exception as e:
