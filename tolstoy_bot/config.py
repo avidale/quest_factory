@@ -6,3 +6,4 @@ This file contains the setup necessary to connect to Telegram
 TOKEN = '449622533:AAGmYhBe1TlSajGJ8Z7So99TpE3PMuW2RRE'
 # Filename of the script
 SCRIPT_FILENAME = 'botanik.xlsx'
+LOG_FILENAME = 'log.txt'

@@ -9,8 +9,11 @@ import pandas as pd
 import re
 import os
 import time
+import logging
 
 STATIC_DIR = 'static'
+
+logging.basicConfig(level=logging.INFO, filename=config.LOG_FILENAME)
 
 bot = telebot.TeleBot(config.TOKEN)
 
@@ -19,7 +22,6 @@ dialogues = dict()
 # read the dialogue script from Excel
 script = pd.read_excel(config.SCRIPT_FILENAME, sheetname='script')
 script = script[script.notnull().max(axis=1)].reset_index(drop=True)
-script.columns = ['action', 'reaction']
 
 
 def strip_content(text, tag='image'):
@@ -49,6 +51,9 @@ def thematic_response(message):
     """ This function gives user messages to dialogue manager
     and sends back to the user its response.
     """
+    # todo: log input types other than text
+    logging.info('IN:' + str(message.chat.id) + ':'
+                 + message.text.replace('\n', ' <newline> '))
     if message.chat.id not in dialogues:
         greeting1(message)
         return
@@ -59,18 +64,22 @@ def thematic_response(message):
     
     if len(responce_text) > 0:
         bot.send_message(message.chat.id, responce_text)
+        logging.info('OUT:' + str(message.chat.id) + ':'
+                     + responce_text.replace('\n', ' <newline> '))
     for filename in responce_images:
         try:
             with open(os.path.join(STATIC_DIR, filename), 'rb') as file:
                 bot.send_photo(message.chat.id, file)
         except FileNotFoundError:
             bot.send_message(message.chat.id, "(Тут должно быть фото {})".format(filename))
+        logging.info('OUT:' + str(message.chat.id) + ':' + filename)
     for filename in responce_audios:
         try:
             with open(os.path.join(STATIC_DIR, filename), 'rb') as file:
                 bot.send_audio(message.chat.id, file)
         except FileNotFoundError:
             bot.send_message(message.chat.id, "(Тут должно быть аудио {})".format(filename))
+        logging.info('OUT:' + str(message.chat.id) + ':' + filename)
     pause = dialogues[message.chat.id].check_pause()
     if pause is not None:
         # todo: set timer for exactly this user, and go on proactively after pause
@@ -89,6 +98,9 @@ while True:
     # because of possible timout of the requests library
     # TypeError for moviepy errors
     # maybe there are others, therefore Exception
+    except KeyboardInterrupt:
+        logging.info("Keyboard interrupt")
+        break
     except Exception as e:
         print(time.ctime())
         print(e)

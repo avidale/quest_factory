@@ -1,0 +1,92 @@
+INFO:root:IN:71034798:ля
+INFO:root:IN:71034798:ля
+INFO:root:OUT:71034798:Вы перешли в начало квеста.
+INFO:root:IN:71034798:привет!
+INFO:root:OUT:71034798:Приветствуем,  любитель приключений! Вы сможете стать частью вело-квеста по местам Москвы Льва Толстого на рубеже 19-20 веков. Все, что нужно для этого – смартфон и велосипед: если велосипеда нет, мы подскажем, где его арендовать. Выберите день, соберите друзей и отправляйтесь в путь! Мы раскроем все карты: где Лев Николаевич жил, что ел, кого навещал и как складывалась жизнь главной медийной личности того времени. На этом мы оставляем вас и передаем в заботливые руки самого русского писателя. 
+
+Приблизительное время прохождения квеста: 1,5 часа + 1 час на посещение усадьбы
+День недели: любой, кроме понедельника (не работает Усадьба Толстого в Хамовниках)
+Стоимость: 300 рублей - посещение Усадьбы (100 рублей для студентов) + аренда велосипеда в случае необходимости.
+
+Когда будете готовы начать, напишите в строку ввода «готов».
+
+
+
+INFO:root:IN:71034798:ололо
+INFO:root:OUT:71034798:Дорогой друг! Приветствую из глубин истории, ваш Лев Николаевич. Я предлагаю вам прогуляться по Москве моего времени. Для того чтобы вы, дорогой друг, все успели, не забудьте велосипед. И не проспите - начните прогулку по моей Москве ближе к 14:00, чтобы успеть посмотреть на нашу Усадьбу. Кстати, это я с Соней, а рядом мой велосипед. (Поприветствуйте в ответ Льва Николаевича)  
+
+
+INFO:root:OUT:71034798:Velosiped.jpg
+INFO:root:IN:71034798:олоо
+INFO:root:OUT:71034798:Кстати, велосипеды - это, конечно, очень здорово. Я впервые сел на велосипед поздно, в возрасте 67 лет. Как сейчас помню: занятия проходили в московском Манеже, где я неизменно наезжал на еще одну ученицу - полную даму с перьями - в силу неопытности.  Меня эти упражнения ребячески веселили, хотя родные и окружающие волновались. Даже говорили, что вредно. А городская управа выдала мне билет с разрешением ездить по улицам города.  В моей с Соней Усадьбе в Хамовниках до ваших пор стоит мой велосипед «Ровер» - благородный жеребец! В те времена я был в глубокой печали, но члены Московского Общества любителей велосипедов решили подарить мне велосипед и научить меня кататься по тропинкам сада в нашем с Соней доме, чем очень порадовали дедушку. 
+
+А у вас есть велосипед?
+
+ERROR:TeleBot:ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:\n[b\'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}\']',)
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:
+[b'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}']
+
+ERROR:TeleBot:ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:\n[b\'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}\']',)
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:
+[b'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}']
+
+ERROR:TeleBot:ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:\n[b\'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}\']',)
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:
+[b'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}']
+
+ERROR:TeleBot:ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:\n[b\'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}\']',)
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:
+[b'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}']
+

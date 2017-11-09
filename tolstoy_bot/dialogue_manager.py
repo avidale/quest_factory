@@ -5,7 +5,6 @@ This class is messenger-agnostic, ang could be reused with VK, WhatsApp, etc.
 """
 import pandas as pd
 import numpy as np
-# todo: add logging of all the input and output messages within the bot
 
 # todo: большой вопрос, как обрабатывать паузы!
 # todo: introduce specific MESSAGE and RESPONSE objects, messenger-agnostic.
@@ -44,7 +43,7 @@ class StupidLinearDialogue:
             tag2index = tags.reset_index().set_index('tag')['index'].to_dict()
 
             def find_indices(tags):
-                return [tag2index[t] for t in x.split('|')]
+                return [tag2index[t] for t in tags.split('|')]
             candidates = self.script.next_tags.dropna().apply(find_indices)
             self.script['candidate_positions'].update(candidates)
         # fill empty actions and reactions
@@ -107,9 +106,9 @@ class StupidLinearDialogue:
                 # todo: parse location
         else:
             # check if input equals one of pattern words
-            texts = expected.split('|')
-            # todo: allow synonym matching, case inconsistencies, RE, etc.
-            return real.text in texts
+            texts = expected.lower().split('|')
+            # todo: allow synonym matching, case selectivity, RE, etc.
+            return real.text.lower() in texts
 
     def is_valid_string(self, s):
         return type(s) is str and len(s) > 0
