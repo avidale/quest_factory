@@ -37,11 +37,15 @@ class StupidLinearDialogue:
         self.position = 0  # последнее завершённое действие
         self.count = self.script.shape[0]
         # parse next positions - they are lists of indices
-        # by default, next position is next index (or the first index, for the last row).
+        # by default, next position is next index (the 1st, for the last row).
         self.script['candidate_positions'] = [[i] for i in list(range(1, self.count)) + [0]]
         if 'next_tags' in self.script and 'tag' in self.script:
-            tag2index = self.script.tag.dropna().astype(str).reset_index().set_index('tag')['index'].to_dict()
-            candidates = self.script.next_tags.dropna().apply(lambda x: [tag2index[t] for t in x.split('|')])
+            tags = self.script.tag.dropna().astype(str)
+            tag2index = tags.reset_index().set_index('tag')['index'].to_dict()
+
+            def find_indices(tags):
+                return [tag2index[t] for t in x.split('|')]
+            candidates = self.script.next_tags.dropna().apply(find_indices)
             self.script['candidate_positions'].update(candidates)
         # fill empty actions and reactions
         for c in ['action', 'reaction']:
@@ -104,11 +108,12 @@ class StupidLinearDialogue:
         else:
             # check if input equals one of pattern words
             texts = expected.split('|')
+            # todo: allow synonym matching, case inconsistencies, RE, etc.
             return real.text in texts
 
     def is_valid_string(self, s):
         return type(s) is str and len(s) > 0
 
     def check_pause(self):
-        #todo: if next expected action is [pause|t] or [pause], return t or self.default_pause
+        # todo: if next expected action is [pause|t] or [pause], return t or self.default_pause
         return None
