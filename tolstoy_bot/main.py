@@ -5,6 +5,9 @@ This is the main executable file of the Tolstoy Telegram bot
 import config
 import telebot  # need to pip install pyTelegramBotAPI
 from dialogue_manager import StupidLinearDialogue  # the main logic here!
+import threading
+import time
+
 import pandas as pd
 import re
 import os
@@ -80,31 +83,73 @@ def thematic_response(message):
         except FileNotFoundError:
             bot.send_message(message.chat.id, "(Тут должно быть аудио {})".format(filename))
         logging.info('OUT:' + str(message.chat.id) + ':' + filename)
-    pause = dialogues[message.chat.id].check_pause()
-    if pause is not None:
-        # todo: set timer for exactly this user, and go on proactively after pause
-        pass
 
 
 @bot.message_handler(commands=['reset'])
 def give_help(message):
-    bot.send_message(message.chat.id, "Команды /start и /reset обе переводят тебя в начало диалога.")
+    bot.send_message(message.chat.id, "Команды /start и /reset "
+                     + "обе переводят тебя в начало диалога.")
 
 
-while True:
+class Object:
+    """ Just an empty object to use anywhere """
+    pass
+
+
+class DummyMessage:
+    """ A dummy message that comes after a pause """
+    def __init__(self, chat_id, text='A_DUMMY_MESSAGE'):
+        self.chat = Object()
+        self.chat.id = chat_id
+        self.text = text
+
+
+def proactive():
+    """ Proactively send something to all the users, if needed.
+        This function may be called with small time interval.
+    """
+    for chat_id, dialog in dialogues.items():
+        if dialog.needs_proactive():
+            dummy = DummyMessage(chat_id)
+            thematic_response(dummy)
+
+
+def start_proactive(pause=10):
+    while True:
+        logging.log('WAKEUP')
+        try:
+            proactive()
+        except Exception as ex:
+            print('thread exception')
+            print(ex)
+        time.sleep(pause)
+
+# start proactive checking
+proactive_thread = threading.Thread(target=start_proactive, daemon=True)
+proactive_thread.start()
+
+
+restart = False
+if not restart:
+    bot.polling(none_stop=False)
+while restart:
     try:
         bot.polling(none_stop=True)
     # ConnectionError and ReadTimeout arise
     # because of possible timout of the requests library
     # TypeError for moviepy errors
     # maybe there are others, therefore Exception
+    # todo: for some errors, do NOT break!
     except KeyboardInterrupt:
         logging.info("Keyboard interrupt")
-        break
+        restart = False
+        bot.stop_polling()
     except Exception as e:
         print(time.ctime())
         print(e)
+        restart = False
+        bot.stop_polling()
+        break
         time.sleep(15)
 
 # todo: pickle bot state and try to recreate everything on restart.
-# todo: 
