@@ -102,9 +102,9 @@ class StupidLinearDialogue:
                 # todo: parse location
         else:
             # check if input equals one of pattern words
-            texts = expected.lower().split('|')
+            texts = [s.strip() for s in expected.lower().split('|')]
             # todo: allow synonym matching, RE, spelling correction, etc.
-            return real.text.lower() in texts
+            return real.text.lower().strip() in texts
 
     def is_valid_string(self, s):
         return type(s) is str and len(s) > 0

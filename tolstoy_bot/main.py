@@ -55,6 +55,7 @@ def thematic_response(message):
     and sends back to the user its response.
     """
     # todo: log input types other than text
+    # todo: separate input processing from response processing
     logging.info('IN:' + str(message.chat.id) + ':'
                  + message.text.replace('\n', ' <newline> '))
     if message.chat.id not in dialogues:
@@ -62,21 +63,21 @@ def thematic_response(message):
         return
     
     response = dialogues[message.chat.id].react(message)
-    responce_text, responce_images = strip_content(response, 'image')
-    responce_text, responce_audios = strip_content(responce_text, 'audio')
+    response_text, response_images = strip_content(response, 'image')
+    response_text, response_audios = strip_content(response_text, 'audio')
     
-    if len(responce_text) > 0:
-        bot.send_message(message.chat.id, responce_text)
+    if len(response_text) > 0:
+        bot.send_message(message.chat.id, response_text)
         logging.info('OUT:' + str(message.chat.id) + ':'
-                     + responce_text.replace('\n', ' <newline> '))
-    for filename in responce_images:
+                     + response_text.replace('\n', ' <newline> '))
+    for filename in response_images:
         try:
             with open(os.path.join(STATIC_DIR, filename), 'rb') as file:
                 bot.send_photo(message.chat.id, file)
         except FileNotFoundError:
             bot.send_message(message.chat.id, "(Тут должно быть фото {})".format(filename))
         logging.info('OUT:' + str(message.chat.id) + ':' + filename)
-    for filename in responce_audios:
+    for filename in response_audios:
         try:
             with open(os.path.join(STATIC_DIR, filename), 'rb') as file:
                 bot.send_audio(message.chat.id, file)
@@ -130,7 +131,7 @@ def start_proactive(pause=10):
 
 # start proactive checking
 proactive_thread = threading.Thread(target=start_proactive, daemon=True,
-                                    args=(3,))
+                                    args=(5,))
 proactive_thread.start()
 
 
@@ -145,6 +146,7 @@ while restart:
     # TypeError for moviepy errors
     # maybe there are others, therefore Exception
     # todo: for some errors, do NOT break!
+    # todo: correctly manage keyboard stopping
     except KeyboardInterrupt:
         logging.info("Keyboard interrupt")
         restart = False
@@ -155,6 +157,6 @@ while restart:
         restart = False
         bot.stop_polling()
         break
-        time.sleep(15)
+        #time.sleep(15)
 
 # todo: pickle bot state and try to recreate everything on restart.

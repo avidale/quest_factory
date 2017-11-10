@@ -1,3 +1,7 @@
+"""
+A couple of threading examples
+"""
+
 import threading
 import time
 
