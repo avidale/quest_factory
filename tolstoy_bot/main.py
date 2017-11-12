@@ -12,7 +12,7 @@ import pandas as pd
 import re
 import os
 import time
-import logging
+import logging  # todo: log with timestamps
 import pickle
 
 STATIC_DIR = 'static'
@@ -42,9 +42,9 @@ def dump_dialogues(filename):
 def load_dialogues(filename):
     """ Restore position of each dialogue from a file, if it is here """
     if os.path.isfile(filename):
-        with open(filename) as f:
+        with open(filename, 'rb') as f:
             positions = pickle.load(f)
-            for key, position in positions:
+            for key, position in positions.items():
                 if key not in dialogues:
                     # todo: make dialogue-creation a function
                     dialogues[key] = StupidLinearDialogue(script)
@@ -146,7 +146,7 @@ def proactive():
 
 def start_proactive(pause=10):
     while True:
-        logging.info('WAKE_UP')
+        # logging.info('WAKE_UP')
         try:
             proactive()
         except Exception as ex:
@@ -178,6 +178,11 @@ while restart:
     # API was unsuccessful. The server returned HTTP 429 Too Many Requests.
     # Response body: [b'{"ok":false,"error_code":429,"description":
     # "Too Many Requests: retry after 75","parameters":{"retry_after":75}}']
+    # telebot.apihelper.ApiException: A request to the Telegram API was
+    # unsuccessful. The server returned HTTP 409 Conflict. Response body:
+    # [b'{"ok":false,"error_code":409,"description":
+    # "Conflict: terminated by other long poll or webhook"}']
+
 
     except KeyboardInterrupt:
         logging.info("Keyboard interrupt")

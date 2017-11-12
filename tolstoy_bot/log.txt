@@ -3738,3 +3738,164 @@ INFO:root:WAKE_UP
 INFO:root:IN:71034798:и
 INFO:root:OUT:71034798:Приветствуем, любитель приключений! Вы сможете стать частью вело-квеста имени Льва Толстого. Вы узнаете больше о самой громкой медийной личности того времени и о людях, которые его окружали.  <newline>  <newline> Мы постарались в формате квеста осветить самые любопытные стороны его личности. Все, что нужно для старта – смартфон и велосипед: если велосипеда нет, арендуйте его через приложение “Велобайк”. Выберите день, соберите друзей и отправляйтесь в путь! <newline>  <newline> Приблизительное время прохождения квеста: 1,5 часа + 1 час на посещение усадьбы <newline>  <newline> День недели: любой, кроме понедельника (не работает Усадьба Толстого в Хамовниках) <newline>  <newline> Стоимость: 300 рублей - посещение Усадьбы (100 рублей для студентов) + аренда велосипеда в случае необходимости.
 INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:s
+INFO:root:IN:244169591:/start
+INFO:root:IN:71034798:s
+INFO:root:OUT:71034798:Приветствуем, любитель приключений! Вы сможете стать частью вело-квеста имени Льва Толстого. Вы узнаете больше о самой громкой медийной личности того времени и о людях, которые его окружали.  <newline>  <newline> Мы постарались в формате квеста осветить самые любопытные стороны его личности. Все, что нужно для старта – смартфон и велосипед: если велосипеда нет, арендуйте его через приложение “Велобайк”. Выберите день, соберите друзей и отправляйтесь в путь! <newline>  <newline> Приблизительное время прохождения квеста: 1,5 часа + 1 час на посещение усадьбы <newline>  <newline> День недели: любой, кроме понедельника (не работает Усадьба Толстого в Хамовниках) <newline>  <newline> Стоимость: 300 рублей - посещение Усадьбы (100 рублей для студентов) + аренда велосипеда в случае необходимости.
+INFO:root:IN:71034798:d
+INFO:root:OUT:244169591:Приветствуем, любитель приключений! Вы сможете стать частью вело-квеста имени Льва Толстого. Вы узнаете больше о самой громкой медийной личности того времени и о людях, которые его окружали.  <newline>  <newline> Мы постарались в формате квеста осветить самые любопытные стороны его личности. Все, что нужно для старта – смартфон и велосипед: если велосипеда нет, арендуйте его через приложение “Велобайк”. Выберите день, соберите друзей и отправляйтесь в путь! <newline>  <newline> Приблизительное время прохождения квеста: 1,5 часа + 1 час на посещение усадьбы <newline>  <newline> День недели: любой, кроме понедельника (не работает Усадьба Толстого в Хамовниках) <newline>  <newline> Стоимость: 300 рублей - посещение Усадьбы (100 рублей для студентов) + аренда велосипеда в случае необходимости.
+INFO:root:IN:71034798:d
+INFO:root:OUT:71034798:Лев Толстой был фигурой невероятного масштаба и втягивал в орбиту своего влияния огромное число людей самых разных званий и сословий – от высшего общества до крестьян, от священников до революционеров и интеллигенции. О Льве Николаевиче осталось очень много воспоминаний: все его переписки, дневники и произведения оцифрованы и находятся в свободном доступе. <newline>  <newline> Кстати, велосипед для нашего квеста выбран неслучайно: писатель, несмотря на свой преклонный возраст, был одним из первых москвичей, освоивших данный вид транспорта. <newline>  <newline> Когда будете готовы начать, напишите в строку ввода «готов».
+INFO:root:IN:71034798:d
+INFO:root:OUT:71034798:Дом на земледельческом переулке лишь косвенно связан с личностью Толстого. В доме №9 жил Илья Репин – известный художник-передвижник. С Толстым их связывала не только любовь к искусству, но и многолетняя дружба, которая началась в 1880 году, в этом доме. Позже художник напишет свои впечатления от первой встречи:
+INFO:root:OUT:71034798:Первое задание ждет вас по адресу Земледельческий пер., д. 7–9. Здесь вы узнаете о дружбе писателя с деятелями изобразительного искусства и коллегами по писательскому цеху. <newline> Напишите "далее", когда прибудете на место
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:«...я представлял себе... что Лев Толстой очень своеобразный барин, граф, высокого роста, брюнет и не такой большеголовый... А это странный человек, какой-то деятель по страсти, убежденный проповедник... Он чем-то потрясен, расстроен - в голосе его звучит трагическая нота, а из-под густых грозных бровей светятся фосфорическим блеском глаза строгого покаяния».
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:О чем же говорили Репин и Толстой, встретившись в этом доме? Толстой, к удивлению Репина, назвал его любимые картины – «Бурлаки на Волге» и «Царевну Софью Алексеевну» – всего лишь этюдами, а наскучивший самому автору и давно забытый им холст «Досвитки» – картиной.  
+ERROR:TeleBot:ConnectionError occurred, args=(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',)),)
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\adapters.py", line 438, in send
+    timeout=timeout
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 649, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\packages\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 386, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 382, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\http\client.py", line 266, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+requests.packages.urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\sessions.py", line 518, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\sessions.py", line 639, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\requests\adapters.py", line 488, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
+
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:Эту последнюю, выделенную Толстым картину, Репин и стал заканчивать после встречи с писателем. Позднее она получила название «Вечорницы». А «Запорожцев» художник оставил, опять же из-за Толстого (закончил он их лишь в 1891 г.). Таким образом, Репин воспринял толстовские заповеди. <newline>  <newline> Вы готовы выполнить первое задание? Введите "готов" в строке сообщения
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:s
+INFO:root:WAKE_UP
+INFO:root:OUT:71034798:Кто не писал портреты Толстого? <newline> 1. Крамской <newline> 2. Мясоедов <newline> 3. Ге <newline> 4. Серов
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:4
+INFO:root:OUT:71034798:Верно! Серов никогда не писал портрет писателя, он специализировался на исторических картинах. <newline>  <newline> О дружбе писателя с этими и другими художниками, а также писателями, подробнее можно прочитать в статьях ниже. А можно прочитать эти статьи дома, а сейчас пролистнуть дальше, чтобы не тратить время! Оставляем на ваш выбор.
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:url: http://telegra.ph/Tolstoj-i-hudozhniki-11-06 http://telegra.ph/Tolstoj-i-pisateli-11-08-2
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:Теперь отправляйтесь дальше - прямиком на Проточный переулок. Именно, без точного дома - локацией является весь переулок. <newline>  <newline> Напишите нам "добрался", как окажетесь на месте
+ERROR:TeleBot:ApiException occurred, args=('A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:\n[b\'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}\']',)
+Traceback (most recent call last):
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Users\ddale\AppData\Local\Continuum\Anaconda3\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 409 Conflict. Response body:
+[b'{"ok":false,"error_code":409,"description":"Conflict: terminated by other long poll or webhook"}']
+
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:lj
+INFO:root:OUT:71034798:Давайте начнем с задания на знание основных событий в биографии Льва Толстого и истории России в целом. <newline>  <newline> Прочитайте 2 цитаты Толстого и ответьте на вопрос: О каком этапе жизни писателя идет речь? Ответьте одним существительным. Подсказка: эти действия происходили в 1882 году.
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:“Будем записывать, считать, но не будем забывать, что если нам встретится человек раздетый и голодный, то помочь ему важнее всех возможных исследований, открытий всех возможных наук”
+INFO:root:WAKE_UP
+INFO:root:IN:71034798:A_DUMMY_MESSAGE
+INFO:root:OUT:71034798:“Я предлагал воспользоваться *** для того, чтобы узнать нищету в Москве и помочь ей делом и деньгами, и сделать так, чтобы бедных не было в Москве”
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
+INFO:root:WAKE_UP
