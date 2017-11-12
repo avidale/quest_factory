@@ -109,14 +109,10 @@ def proactive():
     """ Proactively send something to all the users, if needed.
         This function may be called with small time interval.
     """
-    print('wake')
     for chat_id, dialog in dialogues.items():
-        print(dialog.position)
-        print(dialog.script.loc[dialog.position, 'candidate_positions'])
         if dialog.needs_proactive():
             dummy = DummyMessage(chat_id)
             thematic_response(dummy)
-    print('sleep back')
 
 
 def start_proactive(pause=10):
@@ -135,7 +131,7 @@ proactive_thread = threading.Thread(target=start_proactive, daemon=True,
 proactive_thread.start()
 
 
-restart = False
+restart = True
 if not restart:
     bot.polling(none_stop=False)
 while restart:
@@ -147,6 +143,13 @@ while restart:
     # maybe there are others, therefore Exception
     # todo: for some errors, do NOT break!
     # todo: correctly manage keyboard stopping
+    # requests.exceptions.ReadTimeout: HTTPSConnectionPool(
+    # host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+    # можно просто ждать telebot.apihelper.ApiException: A request to the Telegram
+    # API was unsuccessful. The server returned HTTP 429 Too Many Requests.
+    # Response body: [b'{"ok":false,"error_code":429,"description":
+    # "Too Many Requests: retry after 75","parameters":{"retry_after":75}}']
+
     except KeyboardInterrupt:
         logging.info("Keyboard interrupt")
         restart = False
@@ -154,9 +157,9 @@ while restart:
     except Exception as e:
         print(time.ctime())
         print(e)
-        restart = False
-        bot.stop_polling()
-        break
+        #restart = False
+        #bot.stop_polling()
+        #break
         #time.sleep(15)
 
 # todo: pickle bot state and try to recreate everything on restart.
