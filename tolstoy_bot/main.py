@@ -13,10 +13,13 @@ import re
 import os
 import time
 import logging
+import pickle
 
 STATIC_DIR = 'static'
 
 logging.basicConfig(level=logging.INFO, filename=config.LOG_FILENAME)
+
+# todo: move all the meaningful work into functions
 
 bot = telebot.TeleBot(config.TOKEN)
 
@@ -25,6 +28,30 @@ dialogues = dict()
 # read the dialogue script from Excel
 script = pd.read_excel(config.SCRIPT_FILENAME, sheetname='script')
 script = script[script.notnull().max(axis=1)].reset_index(drop=True)
+
+
+def dump_dialogues(filename):
+    """ Write position of each dialogue to a file """
+    positions = dict()
+    for key, dial_object in dialogues.items():
+        positions[key] = dial_object.position
+    with open(filename, 'wb') as f:
+        pickle.dump(positions, f)
+
+
+def load_dialogues(filename):
+    """ Restore position of each dialogue from a file, if it is here """
+    if os.path.isfile(filename):
+        with open(filename) as f:
+            positions = pickle.load(f)
+            for key, position in positions:
+                if key not in dialogues:
+                    # todo: make dialogue-creation a function
+                    dialogues[key] = StupidLinearDialogue(script)
+                    dialogues[key].position = position
+
+# read the dialogues right now!
+load_dialogues(config.STATE_FILENAME)
 
 
 def strip_content(text, tag='image'):
@@ -113,6 +140,8 @@ def proactive():
         if dialog.needs_proactive():
             dummy = DummyMessage(chat_id)
             thematic_response(dummy)
+    # save state of each dialogue to a file
+    dump_dialogues(config.STATE_FILENAME)
 
 
 def start_proactive(pause=10):
