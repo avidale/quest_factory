@@ -102,3 +102,5 @@ ENV/
 ipynb_checkpoints/
 __pycache__/
 *~$*
+
+log.txt
