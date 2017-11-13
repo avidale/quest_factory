@@ -161,8 +161,10 @@ proactive_thread.start()
 
 
 restart = True
+
 if not restart:
     bot.polling(none_stop=False)
+
 while restart:
     try:
         bot.polling(none_stop=True)
@@ -191,9 +193,7 @@ while restart:
     except Exception as e:
         print(time.ctime())
         print(e)
+        bot.stop_polling()
         #restart = False
-        #bot.stop_polling()
         #break
-        #time.sleep(15)
-
-# todo: pickle bot state and try to recreate everything on restart.
+        time.sleep(15)
