@@ -171,7 +171,7 @@ if not restart:
 
 while restart:
     try:
-        bot.polling(none_stop=True)
+        bot.polling(none_stop=False)
     # ConnectionError and ReadTimeout arise
     # because of possible timout of the requests library
     # TypeError for moviepy errors
