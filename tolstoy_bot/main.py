@@ -24,6 +24,7 @@ logging.basicConfig(level=logging.INFO, filename=config.LOG_FILENAME)
 bot = telebot.TeleBot(config.TOKEN)
 
 dialogues = dict()
+previous_positions = dict()
 
 # read the dialogue script from Excel
 script = pd.read_excel(config.SCRIPT_FILENAME, sheetname='script')
@@ -35,8 +36,11 @@ def dump_dialogues(filename):
     positions = dict()
     for key, dial_object in dialogues.items():
         positions[key] = dial_object.position
-    with open(filename, 'wb') as f:
-        pickle.dump(positions, f)
+    global previous_positions
+    if str(previous_positions) != str(positions):
+        with open(filename, 'wb') as f:
+            pickle.dump(positions, f)
+        previous_positions = positions
 
 
 def load_dialogues(filename):
